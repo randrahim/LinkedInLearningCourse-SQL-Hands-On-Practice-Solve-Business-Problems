@@ -8,7 +8,7 @@ sum(NumberOfUsers) as total_users <br>
 FROM subscriptions <br>
 GROUP BY CustomerID;</p>
 
-<p> *** Calculate the average number of users across all customers. ***</p>
+<p> *** Calculate the total number of registered users for each customer across all subscriptions. ***</p>
 <p>with num_users as (<br>
 SELECT CustomerID,<br>
 sum(NumberOfUsers) as total_users<br>
