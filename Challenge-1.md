@@ -1,14 +1,14 @@
-<!-- Retrieve all subscription records from the subscriptions table. -->
+<p> *** Retrieve all subscription records from the subscriptions table. ***</p>
 <p>SELECT *<br>
 FROM subscriptions;</p>
 
-<p> ************************** </p>
+<p> *** Calculate the total number of users for each customer. ***</p>
 <p>SELECT CustomerID, <br>
 sum(NumberOfUsers) as total_users <br>
 FROM subscriptions <br>
 GROUP BY CustomerID;</p>
 
-<p> ************************** </p>
+<p> *** Calculate the average number of users across all customers. ***</p>
 <p>with num_users as (<br>
 SELECT CustomerID,<br>
 sum(NumberOfUsers) as total_users<br>
