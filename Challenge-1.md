@@ -1,7 +1,7 @@
-SELECT \*
+SELECT * <br>
 FROM subscriptions;
 
-SELECT CustomerID,
-sum(NumberOfUsers) as total_users
-FROM subscriptions
+SELECT CustomerID, <br>
+sum(NumberOfUsers) as total_users <br>
+FROM subscriptions <br>
 GROUP BY CustomerID;
