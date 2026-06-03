@@ -1,3 +1,4 @@
+<!-- Retrieve all subscription records from the subscriptions table. -->
 <p>SELECT *<br>
 FROM subscriptions;</p>
 
