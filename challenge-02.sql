@@ -1,23 +1,23 @@
-with monthly_revs as (
-SELECT *
-FROM subscriptions s
-
-JOIN products p
-ON s.productid = p.productid
-
-WHERE s.orderdate between '2022-01-01' and '2022-12-31'
-
-GROUP BY 
-  date_trunc('month', s.orderdate), p.productname
+WITH monthly_revs AS (
+  SELECT
+    p.productname,
+    EXTRACT(MONTH FROM s.orderdate) AS order_month,
+    SUM(s.revenue) AS revenue
+  FROM subscriptions s
+  JOIN products p
+    ON s.productid = p.productid
+  WHERE s.orderdate >= '2022-01-01'
+    AND s.orderdate < '2023-01-01'
+  GROUP BY
+    p.productname,
+    EXTRACT(MONTH FROM s.orderdate)
 )
 
-SELECT 
+SELECT
   productname,
-  min(revenue) as min_rev,
-  max(revenue) as max_rev,
-  avg(revenue) as avg_rev,
-  stddev(revenue) as std_dev_rev
-FROM 
-  monthly_revs
-GROUP BY 
-  productname;
+  MIN(revenue) AS min_rev,
+  MAX(revenue) AS max_rev,
+  AVG(revenue) AS avg_rev,
+  STDDEV(revenue) AS std_dev_rev
+FROM monthly_revs
+GROUP BY productname;
