@@ -1,9 +1,12 @@
-SELECT CustomerID,
-       count(productid) as num_products,
-       sum(numberofusers) as total_users,
-       case when count(productid) = 1
-            OR sum(numberofusers) >= 5000
-            then 1 else 0
-            end as upsell_opprtunity
+SELECT
+  CustomerID,
+  COUNT(productid) AS num_products,
+  SUM(numberofusers) AS total_users,
+  CASE
+    WHEN COUNT(productid) = 1
+      OR SUM(numberofusers) >= 5000
+    THEN 1
+    ELSE 0
+  END AS upsell_opportunity
 FROM subscriptions
 GROUP BY CustomerID;
