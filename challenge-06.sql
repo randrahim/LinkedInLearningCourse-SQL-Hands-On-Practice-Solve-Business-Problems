@@ -1,12 +1,11 @@
 SELECT 
-    userid,
-    sum(case when el.eventid = 1 then 1 else 0 end) as ViewedHelpCenterPage,
-    case when el.eventid = 2 then 1 else 0 end as ClickedFAQs,
-    case when el.eventid = 3 then 1 else 0 end as ClickedContactSupport,
-    case when el.eventid = 4 then 1 else 0 end as SubmittedTicket,
+  el.userid,
+  SUM(CASE WHEN el.eventid = 1 THEN 1 ELSE 0 END) AS ViewedHelpCenterPage,
+  SUM(CASE WHEN el.eventid = 2 THEN 1 ELSE 0 END) AS ClickedFAQs,
+  SUM(CASE WHEN el.eventid = 3 THEN 1 ELSE 0 END) AS ClickedContactSupport,
+  SUM(CASE WHEN el.eventid = 4 THEN 1 ELSE 0 END) AS SubmittedTicket
 FROM frontendeventlog el
 JOIN frontendeventdefinitions def
   ON el.eventid = def.eventid
-WHERE eventtype = 'Customer Support'
-GROUP BY userid
-   
+WHERE def.eventtype = 'Customer Support'
+GROUP BY el.userid;
