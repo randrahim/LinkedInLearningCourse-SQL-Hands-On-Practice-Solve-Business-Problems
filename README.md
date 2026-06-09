@@ -49,6 +49,3 @@ SELECT
     SUM(registered_users) AS total_registered_users
 FROM subscriptions
 GROUP BY customer_id;
-
-<img width="2596" height="2006" alt="CertificateOfCompletion_SQL HandsOn Practice Solve Business Problems" src="https://github.com/user-attachments/assets/3c25c117-16b9-41eb-bf3b-c5505ae176ff" />
-
