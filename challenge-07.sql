@@ -1,4 +1,4 @@
-with all_subscriptions as (
+With all_subscriptions as(
   SELECT subscriptionid,
          expirationdate
   FROM subscriptionsproduct1
@@ -12,9 +12,10 @@ with all_subscriptions as (
   WHERE active = 1
 )
 
-SELECT 
-  date_trunc('year', expirationdate) as exp_year,
-  count(*) as subscriptions 
-FROM all_subscriptions 
-GROUP BY date_trunc('year', expirationdate)
-
+SELECT
+	date_trunc('year', expirationdate) as exp_year, 
+	count(*) as subscriptions
+FROM
+	all_subscriptions
+GROUP BY 
+	date_trunc('year', expirationdate)
