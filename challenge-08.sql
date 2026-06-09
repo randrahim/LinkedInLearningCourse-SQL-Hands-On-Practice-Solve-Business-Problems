@@ -1,4 +1,4 @@
-with all_cancelation_reasons as (
+with all_cancelation_reasons as(
   SELECT subscriptionid, 
          cancelationreason1 as cancelationreason
   FROM cancelations 
@@ -16,8 +16,10 @@ with all_cancelation_reasons as (
   FROM cancelations 
 )
 
-SELECT 
+SELECT
     cast(count(
-      case when cancelationreason = 'Expensive'
-      then subscriptionid end) as float)
-FROM all_cancelation_reasons;
+        case when cancelationreason = 'Expensive' 
+        then subscriptionid end) as float)
+    /count(distinct subscriptionid) as percent_expensive
+FROM    
+    all_cancelation_reasons;
