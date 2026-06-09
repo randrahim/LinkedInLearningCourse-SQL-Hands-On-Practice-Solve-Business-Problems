@@ -1,9 +1,11 @@
 with monthly_revs as (
-  SELECT 
-    date_trunc('month', orderdate) as order_month,
+  select 
+    date_trunc('month', orderdate) as order_month, 
     sum(revenue) as monthly_revenue
-  FROM subscriptions
-  GROUP BY date_trunc('month', orderdate)
+  from 
+      subscriptions
+  group by 
+      date_trunc('month', orderdate)
 )
 
 SELECT current.order_month as current_month,
